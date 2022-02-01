@@ -1,0 +1,16 @@
+.navbarList {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(14, 156, 85, 0.788), midnightblue);
+    margin: 0px;
+}
+
+.navbarList li {
+    margin: 25px;
+}
+
+.navbarList li:hover {
+    margin: 25px;
+    color: white;
+}

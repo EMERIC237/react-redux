@@ -1,0 +1,33 @@
+ .formContent{
+     margin: 20px;
+     padding: 10px;
+ }
+
+.formItem label { 
+    float: left;
+}
+
+.formItem input { 
+    float: left;
+    width: 400px;
+    height: 25px;
+}
+
+.formItem textarea { 
+    float: left;
+    width: 400px;
+   height: 300px;
+   max-height: 300px;
+}
+
+.formItem {
+    display: table-caption;
+}
+
+.formItem button {
+    float: left;
+    margin-top: 10px;
+    width: 120px;
+    padding: 8px;
+    
+}
