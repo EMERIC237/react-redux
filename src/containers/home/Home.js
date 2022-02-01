@@ -12,36 +12,25 @@ function Home() {
     ...state.formReducer,
   }));
   const dispatch = useDispatch();
- 
+  const [show, setShow] = useState(false);
+  const [formToChange, setFormToChange] = useState({});
+
   useEffect(() => {
     dispatch(getForm());
-  }, []);
+  },[]);
 
+  // useEffect(() => {
+  //   setFormToChange()
+  // }, [formToChange]);
 
-  const [show, setShow] = useState(false)
-  const [value, setValue] = useState({
-    id: null,
-    title: '',
-    body: ''
-  })
+  const updateClick = (form) => {
+    setFormToChange((previousForm) => ({
+      ...previousForm,
+      ...form,
+    }));
+    setShow(true);
+  };
 
-  const updateClick = (id, title, body) => {
-    setValue((currentValue) => ({
-      ...currentValue,
-      id,
-      title,
-      body
-    }))
-setShow(true)
-  }
-  // function removeItem(e) {
-  //   const id = e.target.getAttribute("id");
-  //   console.log(id);
-  //   const filter = lists.filter((list) => list.id !== id);
-  //   setLists(filter);
-  // }
-
-  console.log("this is the forms`:", forms);
   if (forms.length === 0) {
     return <div>Loading....</div>;
   }
@@ -50,7 +39,7 @@ setShow(true)
       <Navbar />
       {forms.map((form) => {
         return (
-          <Card key={uuidv4()} >
+          <Card key={uuidv4()}>
             <h1> {form.id} </h1>
             <h5> {form.title} </h5>
             <p> {form.body} </p>
@@ -63,13 +52,21 @@ setShow(true)
               remove
             </button>
 
-            <button
-              id={form.id}
-              onClick={updateClick(form.id, form.title, form.body)}>update  </button>
+            <button id={form.id} onClick={()=>updateClick(form)}>
+              update{" "}
+            </button>
           </Card>
         );
       })}
-      {show ? <Modal onClose={() => setShow(false)} show={show} formId={value.id} formTitle={value.title} formBody={value.body} /> : null}
+      {show ? (
+        <Modal
+          onClose={() => setShow(false)}
+          show={show}
+          formId={formToChange.id}
+          formTitle={formToChange.title}
+          formBody={formToChange.body}
+        />
+      ) : null}
     </>
   );
 }

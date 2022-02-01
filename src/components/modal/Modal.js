@@ -6,7 +6,6 @@ import './Modal.css';
 export default function Modal(props) {
     const dispatch = useDispatch();
     const { formId, formTitle, formBody} = props;
-    console.log('data', formId, formTitle, formBody);
 
     const closeOnEscapeKeyDown = (e) => {
        if ((e.charCode || e.keyCode) === 27) {

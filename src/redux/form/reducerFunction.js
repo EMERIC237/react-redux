@@ -5,7 +5,6 @@ export const deleteFormFromStore = (state, action) => {
 }
 
 export const updateFormOnStore = (state, action) => {
-    console.log(action);
     const index = state.forms.findIndex((form) => form.id === action.id)
     const newForms = [...state.forms];
     newForms[index] = {...newForms[index], 
